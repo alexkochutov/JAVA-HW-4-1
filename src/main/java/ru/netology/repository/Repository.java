@@ -1,7 +1,10 @@
 package ru.netology.repository;
 
 import ru.netology.domain.Product;
+import ru.netology.exceptions.AlreadyExistsException;
 import ru.netology.exceptions.NotFoundException;
+
+import java.rmi.AlreadyBoundException;
 
 public class Repository {
     private Product[] dataStorage = new Product[0];
@@ -14,11 +17,15 @@ public class Repository {
         this.dataStorage = dataStorage;
     }
 
-    public void save(Product item) {
-        Product[] tempStorage = new Product[dataStorage.length + 1];
-        System.arraycopy(dataStorage, 0, tempStorage, 0, dataStorage.length);
-        tempStorage[tempStorage.length - 1] = item;
-        dataStorage = tempStorage;
+    public void save(Product item) throws RuntimeException {
+        if (findByID(item.getId()) != null) {
+            throw new AlreadyExistsException("Element with id: " + item.getId() + " already exists");
+        } else {
+            Product[] tempStorage = new Product[dataStorage.length + 1];
+            System.arraycopy(dataStorage, 0, tempStorage, 0, dataStorage.length);
+            tempStorage[tempStorage.length - 1] = item;
+            dataStorage = tempStorage;
+        }
     }
 
     public Product[] findAll() {

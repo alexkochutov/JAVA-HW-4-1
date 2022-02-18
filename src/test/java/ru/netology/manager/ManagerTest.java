@@ -15,7 +15,7 @@ class ManagerTest {
     Product item2 = new Book(2, "book 1", 100, "author");
     Product item3 = new Smartphone(3, "smartphone", 100000, "apple");
     Product item4 = new Smartphone(4, "smartphone", 50000, "samsung");
-    Product item5 = new Smartphone(4, "smartphone", 25000, "xiaomi");
+    Product item5 = new Smartphone(5, "smartphone", 25000, "xiaomi");
 
     /*
         Set of tests for covering manager.add method
