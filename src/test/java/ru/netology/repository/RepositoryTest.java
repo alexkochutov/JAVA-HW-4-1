@@ -68,6 +68,31 @@ class RepositoryTest {
     }
 
     /*
+        Set of tests for covering repository.findByID method
+     */
+
+    @Test
+    void shouldReturnNull() {
+        repository.save(item1);
+        repository.save(item2);
+        repository.save(item3);
+
+        Product actual = repository.findByID(4);
+        assertNull(actual);
+    }
+
+    @Test
+    void shouldReturnProductByID() {
+        repository.save(item1);
+        repository.save(item2);
+        repository.save(item3);
+
+        Product expected = item3;
+        Product actual = repository.findByID(3);
+        assertEquals(expected, actual);
+    }
+
+    /*
         Set of tests for covering repository.removeByID method
      */
 

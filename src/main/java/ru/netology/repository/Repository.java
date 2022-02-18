@@ -24,6 +24,15 @@ public class Repository {
         return getDataStorage();
     }
 
+    public Product findByID(int id) {
+        for (Product product : this.getDataStorage()) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     public void removeByID(int id) {
         if (dataStorage.length != 0) {
             Product[] tempStorage = new Product[dataStorage.length - 1];
