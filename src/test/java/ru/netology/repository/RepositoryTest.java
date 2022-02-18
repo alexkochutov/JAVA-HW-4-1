@@ -92,9 +92,9 @@ class RepositoryTest {
         assertEquals(expected, actual);
     }
 
-    /*
-        Set of tests for covering repository.removeByID method
-     */
+     /*
+         Set of tests for covering repository.removeByID method
+      */
 
     @Test
     void shouldNotRemoveInEmptyRepository() {
@@ -126,5 +126,4 @@ class RepositoryTest {
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
     }
-
 }
