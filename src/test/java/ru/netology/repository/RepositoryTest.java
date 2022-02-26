@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
+import ru.netology.exceptions.NotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -97,12 +98,8 @@ class RepositoryTest {
       */
 
     @Test
-    void shouldNotRemoveInEmptyRepository() {
-        repository.removeByID(1);
-
-        Product[] expected = {};
-        Product[] actual = repository.findAll();
-        assertArrayEquals(expected, actual);
+    void shouldThrowExceptionWhileEmptyRepository() {
+        assertThrows(NotFoundException.class, () -> repository.removeByID(1));
     }
 
     @Test

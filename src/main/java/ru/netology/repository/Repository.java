@@ -42,11 +42,9 @@ public class Repository {
     }
 
     public void removeByID(int id) throws RuntimeException {
-        if (dataStorage.length != 0) {
-            if (findByID(id) == null) {
+        if ((dataStorage.length == 0) || (findByID(id) == null)) {
                 throw new NotFoundException("Element with id: " + id + " not found");
-            }
-
+            } else {
             Product[] tempStorage = new Product[dataStorage.length - 1];
             int tempIndex = 0;
 
